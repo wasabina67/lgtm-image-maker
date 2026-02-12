@@ -1,1 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LGTM Image Maker - Add 'LGTM' text to your images">
+  <title>LGTM Image Maker</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>LGTM Image Maker</h1>
+      <p class="subtitle">Add 'LGTM' to your images</p>
+    </header>
 
+    <main>
+      <section id="upload-section" class="upload-section">
+        <div id="drop-zone" class="drop-zone">
+          <div class="drop-zone-content">
+            <svg class="upload-icon" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="17 8 12 3 7 8"></polyline>
+              <line x1="12" y1="3" x2="12" y2="15"></line>
+            </svg>
+            <p class="drop-zone-text">Drag & Drop your image</p>
+            <p class="drop-zone-or">or</p>
+            <label for="file-input" class="file-input-label">
+              Choose File
+            </label>
+            <input
+              type="file"
+              id="file-input"
+              accept="image/*"
+              class="file-input"
+              aria-label="Choose image file"
+            >
+            <p class="file-info">Supported: JPEG, PNG, GIF, WebP (max 10MB)</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="preview-section" class="preview-section hidden">
+        <div class="canvas-container">
+          <canvas id="preview-canvas"></canvas>
+        </div>
+        <div class="action-buttons">
+          <button id="download-btn" class="btn btn-primary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+            Download
+          </button>
+          <button id="reset-btn" class="btn btn-secondary">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <polyline points="23 20 23 14 17 14"></polyline>
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+            </svg>
+            Choose Another Image
+          </button>
+        </div>
+      </section>
+
+      <div id="error-message" class="error-message hidden" role="alert"></div>
+
+      <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Processing image...</p>
+      </div>
+    </main>
+
+    <footer>
+      <p>Made with ❤️ for code reviews</p>
+    </footer>
+  </div>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
