@@ -1,5 +1,5 @@
-# express-static-server-template
-Express static server template
+# lgtm-image-maker
+LGTM Image Maker
 
 ## Install
 ```bash
