@@ -31,12 +31,16 @@ export class CanvasProcessor {
       this.canvas.height
     );
 
-    const fontSize = this.calculateFontSize(this.canvas.height);
-    this.drawTextWithStroke(
+    const mainFontSize = this.calculateFontSize(this.canvas.height);
+    const subtitleFontSize = this.calculateSubtitleFontSize(mainFontSize);
+
+    this.drawMultiLineTextWithStroke(
       text,
+      'Looks Good To Me',
       this.canvas.width / 2,
       this.canvas.height / 2,
-      fontSize
+      mainFontSize,
+      subtitleFontSize
     );
   }
 
@@ -64,6 +68,10 @@ export class CanvasProcessor {
     return Math.max(40, Math.min(200, fontSize));
   }
 
+  calculateSubtitleFontSize(mainFontSize) {
+    return mainFontSize * 0.4;
+  }
+
   drawTextWithStroke(text, x, y, fontSize) {
     this.ctx.font = `bold ${fontSize}px sans-serif`;
     this.ctx.textAlign = 'center';
@@ -79,6 +87,17 @@ export class CanvasProcessor {
 
     this.ctx.fillStyle = '#ffffff';
     this.ctx.fillText(text, x, y);
+  }
+
+  drawMultiLineTextWithStroke(mainText, subtitleText, x, y, mainFontSize, subtitleFontSize) {
+    const lineSpacing = mainFontSize * 0.15;
+    const totalHeight = mainFontSize + lineSpacing + subtitleFontSize;
+
+    const mainTextY = y - (totalHeight / 2) + (mainFontSize / 2);
+    const subtitleTextY = mainTextY + (mainFontSize / 2) + lineSpacing + (subtitleFontSize / 2);
+
+    this.drawTextWithStroke(mainText, x, mainTextY, mainFontSize);
+    this.drawTextWithStroke(subtitleText, x, subtitleTextY, subtitleFontSize);
   }
 
   clear() {
