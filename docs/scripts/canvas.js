@@ -73,15 +73,19 @@ export class CanvasProcessor {
   }
 
   drawTextWithStroke(text, x, y, fontSize) {
-    this.ctx.font = `bold ${fontSize}px sans-serif`;
+    this.ctx.imageSmoothingEnabled = true;
+    this.ctx.imageSmoothingQuality = 'high';
+
+    this.ctx.font = `bold ${fontSize}px 'Arial Black', Impact, Arial, sans-serif`;
     this.ctx.textAlign = 'center';
     this.ctx.textBaseline = 'middle';
 
-    const strokeWidth = fontSize * 0.05;
+    const strokeWidth = fontSize * 0.06;
 
     this.ctx.strokeStyle = '#000000';
     this.ctx.lineWidth = strokeWidth;
     this.ctx.lineJoin = 'round';
+    this.ctx.lineCap = 'round';
     this.ctx.miterLimit = 2;
     this.ctx.strokeText(text, x, y);
 
